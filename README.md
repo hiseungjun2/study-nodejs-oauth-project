@@ -25,3 +25,7 @@
  MONGO_CLUSTER=
  MONGO_DBNAME=
  ```
+### 4. common.js Host 주소 변경
+```
+const HOST = ''
+```
