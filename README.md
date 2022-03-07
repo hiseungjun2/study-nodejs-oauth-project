@@ -1,24 +1,24 @@
-# Fastcampus 2021 Node.js Project Example
+# 초격차 패키지 : 한 번에 끝내는 Node.js 웹 프로그래밍
+# OAuth 인증 실습
 
-강의의 백엔드 중간 프로젝트에 해당하는 저장소입니다.
+### 1. Package install
+ ```
+ npm install
+ ```
 
-터미널로 프로젝트 루트로 오신 후 다음을 실행해 주세요.
-```bash
-npm install
-```
+### 2. ngrok 설치 후 실행
+ ```
+ ngrok http 5000
+ ```
 
-- `main` 브랜치엔 프로젝트의 뼈대만 있습니다.
-- `.env` 파일을 만들어 프로젝트에서 사용되는 환경변수들을 설정해 주세요.
-
-```bash
-FB_APP_ID=
-FB_CLIENT_SECRET=
-NAVER_CLIENT_ID=
-SERVER_SECRET=
-MONGO_PASSWORD=
-MONGO_CLUSTER=
-MONGO_USER=
-MONGO_DBNAME=
-```
-
-- `lecture` 브랜치엔 완성본이 들어 있습니다.
+### 3. .env 생성 후 파라미터 세팅
+ ```
+ FB_APP_ID=
+ FB_CLIENT_SECRET=
+ NAVER_CLIENT_ID=
+ SERVER_SECRET=
+ MONGO_USER=
+ MONGO_PASSWORD=KSJ=
+ MONGO_CLUSTER=
+ MONGO_DBNAME=
+ ```
