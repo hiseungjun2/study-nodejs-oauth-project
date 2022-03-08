@@ -59,11 +59,15 @@ async function getUserIdWithFacebookId(facebookId) {
  */
 async function getUserAccessTokenForFacebookAccessToken(token) {
   const fbProfile = await getFacebookProfileFromAccessToken(token)
-  const { id: facebookUserId } = fbProfile
+  const { id: facebookUserId, name: nickname } = fbProfile
+
+  const profileImageURL = fbProfile.picture.data.url
 
   const res = await createUserOrLogin({
     platform: 'facebook',
     platformUserId: facebookUserId,
+    nickname,
+    profileImageURL,
   })
   return res.accessToken
 }

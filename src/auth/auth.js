@@ -1,5 +1,6 @@
 // @ts-check
 
+const { v4: uuidv4 } = require('uuid')
 const { signJWT } = require('./jwt')
 const { getUsersCollection } = require('../mongo')
 
@@ -42,6 +43,29 @@ async function createUserOrLogin({
   })
 
   // TODO
+  // 기존 유저가 존재한다면
+  if (existingUser) {
+    return {
+      userId: existingUser.id,
+      accessToken: await signJWT(existingUser.id),
+    }
+  }
+
+  const userId = uuidv4() // 유저 키 값 생성
+
+  await users.insertOne({
+    id: userId,
+    platformUserId, // 해당 플랫폼에서의 user id
+    platform, // kakao, facebook, naver
+    nickname,
+    profileImageURL,
+    verified: true, // 해당 값이 true 이여야만 앱 내에서 정상적인 활동이 가능
+  })
+
+  return {
+    userId,
+    accessToken: await signJWT(userId),
+  }
 }
 
 /**
