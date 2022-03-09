@@ -1,6 +1,7 @@
 // @ts-check
 
 const { v4: uuidv4 } = require('uuid')
+const bcrypt = require('bcrypt')
 const { signJWT } = require('./jwt')
 const { getUsersCollection } = require('../mongo')
 
@@ -86,6 +87,13 @@ function setAccessTokenCookie(res, token) {
 async function encryptPassword(password) {
   return new Promise((resolve, reject) => {
     // TODO
+    bcrypt.hash(password, 10, (err, res) => {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(res)
+      }
+    })
   })
 }
 
@@ -97,6 +105,13 @@ async function encryptPassword(password) {
 async function comparePassword(plainText, password) {
   return new Promise((resolve, reject) => {
     // TODO
+    bcrypt.compare(plainText, password, (err, res) => {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(res)
+      }
+    })
   })
 }
 
